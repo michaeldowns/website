@@ -1,0 +1,11 @@
+General:
+https://exploreflask.com/index.html
+http://flask.pocoo.org/docs/0.10/quickstart/
+Flask Web Development - Miguel Grinberg
+http://flask.pocoo.org/docs/0.10/
+
+Database:
+https://realpython.com/blog/python/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/
+
+Flask-Login:
+https://flask-login.readthedocs.org/en/latest/

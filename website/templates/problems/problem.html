@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "problems" %}
+
+{% block page_content %}
+  <div class="starter-template">
+    <h1>{{ "Problem " ~ problem.id  ~ ": " ~ problem.title }}</h1>
+    <p class="lead">{{ problem.text|safe }}</p>
+    {% if current_user.is_authenticated -%}
+      {% if problem in current_user.problems %}
+	<p><b>Answer: </b> {{ problem.solution }}</p>
+	You solved this problem on {{ moment(date).format('LLLL') }}<br>
+
+	<a href="/thread/{{ problem.id }}">Problem thread</a>
+      {% else %}
+	{{ wtf.quick_form(form) }}
+      {% endif %}
+    {% endif -%}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {{ moment.include_moment() }}
+
+  <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+  </script>
+  
+  <script type="text/javascript" async
+	  src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_CHTML">
+  </script>
+{% endblock %}

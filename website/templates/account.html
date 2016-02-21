@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "account" %}
+
+{% block page_content %}
+  <div class="starter-template">
+    <h1>{{ current_user.username ~ "'s "}}Account</h1>
+    <p class="lead">
+      Problems solved: {{ current_user.problems|length }}<br>
+      Posts: {{ current_user.posts|length }}<br>
+      Created on: {{ moment(current_user.date_created).format('LLLL') }}
+    </p>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	<h3 class="panel-title">Change Password</h3>
+      </div>
+      <div class="panel-body">
+	{{ wtf.quick_form(password_form) }}
+      </div>
+    </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	<h3 class="panel-title">Change Email</h3>
+      </div>
+      <div class="panel-body">
+	{{ wtf.quick_form(email_form) }}
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {{ moment.include_moment() }}
+{% endblock %}

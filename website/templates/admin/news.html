@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "news" %}
+
+{% block page_content %}
+  <div class="starter-template">
+    <h1>Edit News</h1>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+	<h3 class="panel-title">Add News Post</h3>
+      </div>
+      <div class="panel-body">
+	{{ wtf.quick_form(add_news_form) }}
+      </div>
+    </div>
+    
+    {% for form in edit_news_forms %}
+      <div class="panel panel-default">
+	<div class="panel-heading">
+	  <h3 class="panel-title">Edit News Post</h3>
+	</div>
+	<div class="panel-body">
+	  {{ wtf.quick_form(form) }}
+	</div>
+      </div>
+    {% endfor %}
+  </div>
+{% endblock %}

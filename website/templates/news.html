@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% set active_page = "news" %}
+
+{% block page_content %}
+  <div class="starter-template">
+    <h1>News</h1>
+    {% for post in news_posts %}
+      <div class="panel panel-default">
+	<div class="panel-heading">
+	  <h3 class="panel-title">{{ post.title }}</h3>
+	</div>
+	<div class="panel-body">
+	  {{ post.text }}
+	</div>
+	<div class="panel-footer">{{ moment(post.posted).format('LLLL') }}</div>
+      </div>
+  {% endfor %}
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  {{ moment.include_moment() }}
+{% endblock %}

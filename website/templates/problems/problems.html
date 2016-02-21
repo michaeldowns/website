@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% from "macros.html" import display_problem %}
+{% set active_page = "problems" %}
+
+{% block styles %}
+  {{ super() }}
+  <link rel="stylesheet" href="/static/css/lib/bootstrap-table.min.css">
+{% endblock %}
+
+{% block page_content %}
+  <div class="starter-template">
+    <h1>Problems</h1>
+    <table data-toggle="table" data-search="true" data-pagination="true">
+      <thead>
+        <tr>
+          <th data-halign="center" data-sortable="true">Problem ID</th>
+          <th data-halign="center" data-formatter="linkFormatter">Title</th>
+          <th data-halign="center" data-sortable="true" data-formatter="starsFormatter">Difficulty</th>
+	  <th data-halign="center" data-sortable="true">Users Solved</th>
+	  <th data-halign="center" data-formatter="threadFormatter">Thread</th>
+        </tr>
+      </thead>
+      <tbody>
+	{% for problem in problems %}
+	  {{ display_problem(problem, current_user) }}
+	{% endfor %}
+      </tbody>
+    </table>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ super() }}
+  <script type="text/javascript" src="/static/js/lib/bootstrap-table.min.js"></script>
+  <script type="text/javascript">
+    {% include "problems/problems.js" %}
+  </script>
+{% endblock %}
+

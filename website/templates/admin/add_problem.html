@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% set active_page = "problems" %}
+
+{% block page_content %}
+  <div class="starter-template">
+    <h1>Add Problem</h1>
+      {{ wtf.quick_form(form) }}
+  </div>
+{% endblock %}

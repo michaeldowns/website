@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% set active_page = "statistics" %}
+
+{% block page_content %}
+  <div class="starter-template">
+    <h1>Statistics</h1>
+    <p class="lead">
+      <table align="center" class="table">
+	<tr>
+	  <td align="right">Users: </td>
+	  <td>&nbsp;{{ num_users }}</td>
+	</tr>
+	<tr>
+	  <td align="right">Leader: </td>
+	  <td>&nbsp;{{ leader }}</td>
+	</tr>
+	<tr>
+	  <td align="right">Problems: </td>
+	  <td>&nbsp;{{ num_problems }}</td>
+	</tr>
+	<tr>
+	  <td align="right">Easiest Problem: </td>
+	  <td>&nbsp;{{ easiest_problem }}</td>
+	</tr>
+	<tr>
+	  <td align="right">Hardest Problem: </td>
+	  <td>&nbsp;{{ hardest_problem }}</td>
+	</tr>
+      </table>
+    </p>
+  </div>
+{% endblock %}
